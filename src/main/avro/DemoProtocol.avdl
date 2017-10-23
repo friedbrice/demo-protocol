@@ -1,0 +1,10 @@
+@namespace("io.enemyofthestate.demoprotocol")
+protocol DemoProtocol {
+
+  record DemoRecord {
+    string foo;
+    long   bar;
+  }
+
+  string greet(string name, DemoRecord data);
+}

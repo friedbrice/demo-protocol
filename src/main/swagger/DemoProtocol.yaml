@@ -1,0 +1,39 @@
+swagger: "3.0"
+info:
+
+  title: Demo Protocol
+  version: "1.0.0"
+  host: enemyofthestate.io
+  basePath: /demoprotocol
+  schemes: [http]
+  consumes: [application/json]
+  produces: [application/json]
+
+  definitions:
+
+    DemoRecord:
+      type: object
+      required: [foo, bar]
+      properties:
+        foo: {type: string}
+        bar: {type: integer, format: int64}
+
+  paths:
+
+    "/greet":
+      post:
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [name, data]
+                properties:
+                  name: {type: string}
+                  data: {$ref: "#/definitions/DemoRecord"}
+        response:
+          "200":
+            content:
+              application/json:
+                schema: {type: string}
